@@ -1,0 +1,67 @@
+body{
+    font-family: 'Poppins', sans-serif;
+}
+h1{
+    font-size: 40px  !important;
+    line-height: 50px  !important;
+    font-weight:600  !important;
+    color:#050931  !important;
+    margin:0  !important;
+    padding:0  !important;    
+}
+p{
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 28px;
+    color: #8F91A1;
+    margin: 0;
+    padding: 0;
+}
+
+/* navbar */
+.navbar{
+    background:#227C9D;
+}
+.size-logo{
+    font-size: 30px !important;
+    color: white !important;
+}
+.navbar .nav-item{
+    margin:0 !important;
+    padding: 0 !important;
+}
+.navbar .main-btn {
+    background-color:#FE6D73;
+    text-decoration: none !important;
+    color:white;
+    font-size: 15px;
+    font-weight: 500;
+    padding: 10px 40px;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+.navbar .main-btn:hover{
+    background:#FFCB77;
+    transition: all 0.1s ease-out;
+}
+
+/* main page */
+.AddMe{
+    height: 90vh;
+    background-color:#ECF1F4
+}
+.AddMe span{
+    background-color:#227C9D;
+    color:white;
+    display: inline-block;
+    padding: 5px 45px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+.main-page-img{
+    width: 70%;
+    height: 70%;
+}

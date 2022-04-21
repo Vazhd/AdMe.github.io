@@ -1,0 +1,71 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Addme | <%=title%></title>
+    <meta name="google-signin-client_id" content="109959458868-bmqa4f8763eggn12gle677r7rqp7vlai.apps.googleusercontent.com">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <link rel="stylesheet"  href="style.css">
+    <link rel="icon" type="image/x-icon" href="icon.webp">
+
+</head>
+<body>
+<div class="container">
+    <div class="screen">
+        <div class="screen__content">
+            <form class="login">
+                <div class="login__field">
+                    <i class="login__icon fas fa-user"></i>
+                    <input type="text" class="login__input" placeholder="User name / Email">
+                </div>
+                <div class="login__field">
+                    <i class="login__icon fas fa-lock"></i>
+                    <input type="password" class="login__input" placeholder="Password">
+                </div>
+                <button class="button login__submit">
+                    <a href="/" class="button__text">Log In Now</a>
+                    <i class="button__icon fas fa-chevron-right"></i>
+                </button>
+                <button class="button login__submit">
+                <a href="regPage" class="button__text">Registration</a>
+                <i class="button__icon fas fa-chevron-right"></i>
+                </button>
+            </form>
+            <div class="social-login">
+                <h3>log in via</h3>
+                <div class="social-icons">
+                    <div class="g-signin2" data-onsuccess="onSignIn"></div>
+                    <script>
+                        function onSignIn(googleUser) {
+                            var id_token = googleUser.getAuthResponse().id_token;
+                            fetch('http://localhost:3000/gauthenticate?id_token='+id_token)
+                                .then((res)=>res.json())
+                                .then((data)=>{
+                                    sessionStorage.setItem("authToken",data.token)
+                                })
+                        }</script>
+                    <button onclick="myFunction()">Sign Out</button>
+
+                    <script>
+                        function myFunction() {
+                            gapi.auth2.getAuthInstance().signOut().then(function () {
+                                console.log('User signed out.');
+                                location.reload();
+                            });
+
+                        }
+                    </script>
+                </div>
+            </div>
+        </div>
+        <div class="screen__background">
+            <span class="screen__background__shape screen__background__shape4"></span>
+            <span class="screen__background__shape screen__background__shape3"></span>
+            <span class="screen__background__shape screen__background__shape2"></span>
+            <span class="screen__background__shape screen__background__shape1"></span>
+        </div>
+    </div>
+</div>
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<script src="google.js"></script>
+</body>
+</html>
