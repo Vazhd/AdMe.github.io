@@ -2,8 +2,8 @@
   "swagger": "2.0",
   "info": {
     "version": "1.0.0",
-    "title": "My User Project CRUD",
-    "description": "My User Project Application API",
+    "title": "My Blog posts Project CRUD",
+    "description": "My Blog posts Project Application API",
     "license": {
       "name": "MIT",
       "url": "https://opensource.org/licenses/MIT"
@@ -13,8 +13,8 @@
   "basePath": "/",
   "tags": [
     {
-      "name": "Users",
-      "description": "API for users in the system"
+      "name": "Blog posts",
+      "description": "API for Blog posts in the system"
     }
   ],
   "schemes": [
@@ -27,19 +27,19 @@
     "application/json"
   ],
   "paths": {
-    "/addUser": {
+    "/articles": {
       "post": {
         "tags": [
-          "Users"
+          "Blog posts"
         ],
-        "description": "Create new user in system",
+        "description": "Create new Blog post in system",
         "parameters": [
           {
-            "name": "user",
+            "name": "Blog post",
             "in": "body",
-            "description": "User that we want to create",
+            "description": "Blog post that we want to create",
             "schema": {
-              "$ref": "#/definitions/User"
+              "$ref": "#/definitions/Blog posts"
             }
           }
         ],
@@ -48,74 +48,100 @@
         ],
         "responses": {
           "200": {
-            "description": "New user is created",
+            "description": "New Blog post is created",
             "schema": {
-              "$ref": "#/definitions/User"
+              "$ref": "#/definitions/Blog posts"
             }
           }
         }
       }
     },
-    "/users": {
+    "/": {
       "get": {
         "tags": [
-          "Users"
+          "Blog posts"
         ],
-        "summary": "Get all users in system",
+        "summary": "Get all Blog posts in system",
         "responses": {
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/Users"
+              "$ref": "#/definitions/Blog posts"
+            }
+          }
+        }
+
+      }
+    },
+    "/articles/{title}": {
+      "get": {
+        "tags": [
+          "Blog posts"
+        ],
+        "parameters": [
+          {
+            "name": "title",
+            "in": "path",
+            "required": true,
+            "description": "Title of Blog post that we want to find",
+            "type": "string"
+          }
+        ],
+        "summary": "Get all Blog posts in system",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Blog posts"
             }
           }
         }
       }
     },
-    "/user/{id}": {
+    "/articles/{id}": {
       "parameters": [
         {
           "name": "id",
           "in": "path",
           "required": true,
-          "description": "ID of user that we want to find",
-          "type": "integer"
+          "description": "ID of Blog post that we want to find",
+          "type": "string"
         }
       ],
       "delete": {
-        "summary": "Delete user with given ID",
+        "summary": "Delete Blog post with given ID",
         "tags": [
-          "Users"
+          "Blog posts"
         ],
         "responses": {
           "200": {
-            "description": "User is deleted",
+            "description": "Blog post is deleted",
             "schema": {
-              "$ref": "#/definitions/User"
+              "$ref": "#/definitions/Blog posts"
             }
           }
         }
       },
       "put": {
-        "summary": "Update user with give ID",
+        "summary": "Update Blog post with give ID",
         "tags": [
-          "Users"
+          "Blog posts"
         ],
         "parameters": [
           {
-            "name": "user",
+            "name": "Blog post",
             "in": "body",
-            "description": "User with new values of properties",
+            "description": "Blog post with new values of properties",
             "schema": {
-              "$ref": "#/definitions/updateUser"
+              "$ref": "#/definitions/Blog posts"
             }
           }
         ],
         "responses": {
           "200": {
-            "description": "User is updated",
+            "description": "Blog post is updated",
             "schema": {
-              "$ref": "#/definitions/User"
+              "$ref": "#/definitions/Blog posts"
             }
           }
         }
@@ -123,88 +149,23 @@
     }
   },
   "definitions": {
-    "User": {
+    "Blog posts": {
       "required": [
-        "name",
-        "_id",
-        "companies"
+        "title",
+        "description",
+        "markdown"
       ],
       "properties": {
-        "_id": {
-          "type": "integer",
-          "uniqueItems": true
-        },
-        "isPublic": {
-          "type": "boolean"
-        },
-        "name": {
+        "title": {
           "type": "string"
         },
-        "books": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "properties": {
-              "name": {
-                "type": "string"
-              },
-              "amount": {
-                "type": "number"
-              }
-            }
-          }
-
-        },
-        "companies": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-
-        }
-
-      }
-    },
-    "updateUser": {
-      "required": [
-        "name",
-        "companies"
-      ],
-      "properties": {
-        "isPublic": {
-          "type": "boolean"
-        },
-        "name": {
+        "description": {
           "type": "string"
         },
-        "books": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "properties": {
-              "name": {
-                "type": "string"
-              },
-              "amount": {
-                "type": "number"
-              }
-            }
-          }
-
-        },
-        "companies": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-
+        "markdown": {
+          "type": "string"
         }
       }
-    },
-    "Users": {
-      "type": "array",
-      "$ref": "#/definitions/User"
     }
-
   }
 }
