@@ -1,25 +1,26 @@
 {
-  "name": "addmechat1",
+  "name": "markdown-blog",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server.js"
+    "devStart": "nodemon server.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.27.2",
-    "bcrypt": "^5.0.1",
-    "dotenv": "^16.0.1",
-    "express": "^4.18.1",
-    "express-async-handler": "^1.2.0",
-    "jsonwebtoken": "^8.5.1",
-    "mongodb": "^4.6.0",
-    "mongoose": "^6.3.4",
-    "nodemon": "^2.0.16",
-    "uuid": "^8.3.2"
+    "dompurify": "^2.0.8",
+    "ejs": "^3.0.1",
+    "express": "^4.17.1",
+    "jsdom": "^16.2.1",
+    "marked": "^4.0.16",
+    "method-override": "^3.0.0",
+    "mongoose": "^5.9.4",
+    "slugify": "^1.4.0",
+    "swagger-ui-express": "^4.4.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.16"
   }
 }
